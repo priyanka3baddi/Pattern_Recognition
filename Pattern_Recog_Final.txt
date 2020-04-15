@@ -1,0 +1,44 @@
+clc;
+clear all;
+close all;
+[Img_Name,Img_Path]=uigetfile('*','select a Input image 1');
+Img_String1=strcat(Img_Path,Img_Name);
+Input_Img=imread(Img_String1);
+imshow(Input_Img);
+title('Input Image for Patter Recognition')
+if size(Input_Img,3)==3
+Input_Img=rgb2gray(Input_Img);
+end
+threshold = graythresh(Input_Img);
+Input_Img=~im2bw(Input_Img,threshold);
+Input_Img = bwareaopen(Input_Img,30);
+Pattern=[ ];
+notepadfile = fopen('text.txt', 'wt');
+load templates
+global templates
+No_of_Letters_temp=size(templates,2);
+while 1
+[Pattern_SegmentsInput_Img]=Pattern_segmentation(Input_Img);
+No_Of_seg_Img=Pattern_Segments;
+imshow(Pattern_Segments);
+pause(3)
+[Labels Connected_Components] = bwlabel(No_Of_seg_Img);
+for n=1:Connected_Components[Rows,Columns] = find(Labels==n);
+Extracting_Letter=No_Of_seg_Img(min(Rows):max(Rows),min(Columns):max(Columns));
+img_r=imresize(Extracting_Letter,[42 24]);
+
+%Resize should be as perour considered template images
+%imshow(img_r);
+pause(0.5)
+Recog_Pattern_single=Pattern_Recognition(img_r,No_of_Letters_temp);
+Pattern=[PatternRecog_Pattern_single];
+end
+fprintf(notepadfile,'%s\n',Pattern);
+Pattern=[ ];
+if isempty(Input_Img)
+break
+end
+end
+
+fclose(notepadfile);
+winopen('text.txt')

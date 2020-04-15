@@ -1,0 +1,23 @@
+function [Partition_Segments re]=Pattern_segmentation(Input_Img)
+Input_Img=clip(Input_Img);
+Input_Img_rows=size(Input_Img,1);
+for s=1:Input_Img_rows
+if sum(Input_Img(s,:))==0
+First_segment=Input_Img(1:s-1, :);
+% First line matrix
+Remain_segments=Input_Img(s:end, :);
+% Remain line matrix
+Partition_Segments = clip(First_segment);
+re=clip(Remain_segments);
+break
+else
+Partition_Segments=Input_Img;
+re=[ ];
+end
+end
+
+function out_img=clip(img_in)
+[f c]=find(img_in);
+out_img=img_in(min(f):max(f),min
+(c):max(c));
+

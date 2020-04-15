@@ -1,0 +1,87 @@
+function
+Recog_Pattern_single=Pattern_Recognition(imagn,num_letras)
+
+global templates
+Compare_value=[ ];
+for n=1:num_letras
+Correlation_Coef=corr2(templates{1,n},imagn);
+Compare_value=[Compare_valueCorrelation_Coef];
+end
+match_max=find(Compare_value==max(Compare_value));
+
+%*-*-*-*-*-*-*-*-*-*-*-*-*-
+if match_max==1
+Recog_Pattern_single='A';
+elseif match_max==2
+Recog_Pattern_single='B';
+elseif match_max==3
+Recog_Pattern_single='C';
+elseif match_max==4
+Recog_Pattern_single='D';
+elseif match_max==5
+Recog_Pattern_single='E';
+elseif match_max==6
+Recog_Pattern_single='F';
+elseif match_max==7
+Recog_Pattern_single='G';
+elseif match_max==8
+Recog_Pattern_single='H';
+elseif match_max==9
+Recog_Pattern_single='I';
+elseif match_max==10
+Recog_Pattern_single='J';
+elseif match_max==11
+Recog_Pattern_single='K';
+elseif match_max==12
+Recog_Pattern_single='L';
+elseif match_max==13
+Recog_Pattern_single='M';
+elseif match_max==14
+Recog_Pattern_single='N';
+elseif match_max==15
+Recog_Pattern_single='O';
+elseif match_max==16
+Recog_Pattern_single='P';
+elseif match_max==17
+Recog_Pattern_single='Q';
+elseif match_max==18
+Recog_Pattern_single='R';
+elseif match_max==19
+Recog_Pattern_single='S';
+elseif match_max==20
+Recog_Pattern_single='T';
+elseif match_max==21
+Recog_Pattern_single='U';
+elseif match_max==22
+Recog_Pattern_single='V';
+elseif match_max==23
+Recog_Pattern_single='W';
+elseif match_max==24
+Recog_Pattern_single='X';
+elseif match_max==25
+Recog_Pattern_single='Y';
+elseif match_max==26
+Recog_Pattern_single='Z';
+%*-*-*-*-*
+
+elseif match_max==27
+Recog_Pattern_single='1';
+elseif match_max==28
+Recog_Pattern_single='2';
+elseif match_max==29
+Recog_Pattern_single='3';
+elseif match_max==30
+Recog_Pattern_single='4';
+elseif match_max==31
+Recog_Pattern_single='5';
+elseif match_max==32
+Recog_Pattern_single='6';
+elseif match_max==33
+Recog_Pattern_single='7';
+elseif match_max==34
+Recog_Pattern_single='8';
+elseif match_max==35
+Recog_Pattern_single='9';
+else
+Recog_Pattern_single='0';
+end
